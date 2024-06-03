@@ -22,10 +22,6 @@ app.use(
 );
 
 app.use(helmet())
-app.use(helmet.frameguard({ action: 'sameorigin' })); // X-Frame-Options
-app.use(helmet.noSniff()); // X-Content-Type-Options
-app.use(helmet.referrerPolicy({ policy: 'no-referrer' })); // Referrer-Policy
-app.use(helmet.permittedCrossDomainPolicies()); // Permissions-Policy
 
 
 app.use(express.json());

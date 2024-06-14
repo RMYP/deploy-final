@@ -1,9 +1,11 @@
 name: Deploy to Vercel
 
 on:
+  workflow_dispatch:
   push:
+    types: [opened, edited, synchronize]
     branches:
-      - main 
+      - main
 
 jobs:
   deploy:

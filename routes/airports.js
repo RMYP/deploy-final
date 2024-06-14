@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const validator = require("../lib/validator");
+const authentication = require("../middlewares/authentication");
+const checkRole = require("../middlewares/checkrole");
 
 const {
     createNewAirport,
@@ -16,11 +18,21 @@ const {
 router
     .route("/")
     .get(getAllAirports)
-    .post(validator(createAirportSchema), createNewAirport);
+    .post(
+        authentication,
+        checkRole(["ADMIN"]),
+        validator(createAirportSchema),
+        createNewAirport
+    );
 router
     .route("/:id")
     .get(getAirportById)
-    .put(validator(updateAirportSchema), updateAirport)
-    .delete(deleteAirport);
+    .put(
+        authentication,
+        checkRole(["ADMIN"]),
+        validator(updateAirportSchema),
+        updateAirport
+    )
+    .delete(authentication, checkRole(["ADMIN"]), deleteAirport);
 
 module.exports = router;

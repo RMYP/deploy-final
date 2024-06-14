@@ -10,6 +10,7 @@ const { generateJWT } = require("../../../utils/jwtGenerate");
 const { generateSecretEmail } = require("../../../utils/emailHandler");
 const { authorizationUrl } = require("../../../lib/googleOauth2");
 const cors = require("cors")
+const helmet = require("helmet")
 
 const authController = require("../../../controllers/auth");
 const prisma = new PrismaClient();

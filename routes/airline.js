@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const multer = require("multer");
 const authentication = require("../middlewares/authentication");
 const checkRole = require("../middlewares/checkrole");
+const multer = require("multer");
 
 const {
     createNewAirline,
